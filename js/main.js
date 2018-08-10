@@ -1,8 +1,11 @@
 (function (global) {
 	'use strict';
 
-	var App = global.App;
-	var Truck = App.Truck;
-	var DataStore = App.DataStore;
+	const App = global.App;
+	const Truck = App.Truck;
+	const DataStore = App.DataStore;
+
+	const myTruck = new Truck('ncc-1701', new DataStore());
+	global.myTruck = myTruck;
 	
 })(window);
