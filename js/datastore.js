@@ -1,10 +1,9 @@
 (function (global) {
 	'use strict';
-	
+
 	const App = global.App || {};
 
 	function DataStore() {
-		//console.log('Running...');
 		this.data = {};
 	}
 
