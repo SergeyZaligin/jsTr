@@ -15,6 +15,8 @@
   FormHandler.prototype.addSubmitHandler = function () {
     this.$formElement.on('submit', function (event) {
       event.preventDefault();
+      var data = $(this).serializeArray();
+      console.log(data);
     });
   };
   App.FormHandler = FormHandler;
