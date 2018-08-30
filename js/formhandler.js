@@ -5,6 +5,10 @@
   const defaultRange = $('[type="range"]').val();
   const rangeValue = $('#rangeValue');
   const modalSuperForm = $('#superModal');
+  const hideSuper = $('.hideSuper');
+  let count = 1;
+  let flag = false;
+  hideSuper.hide();
 
   compareRange(defaultRange, rangeValue);
 
@@ -29,14 +33,19 @@
         console.log(item.name + ' is ' + item.value);
       });
 
+
       console.log(data);
 
-      if (data.strength > 81) {
+      if (data.strength > 81 && count < 2) {
+        count += 1;
         modalSuperForm.modal({
           show: true
         });
         $('#success-modal').on('click', () => {
           console.log('SUCCESS');
+          modalSuperForm.modal('hide');
+          hideSuper.show();
+          flag = true;
           return false;
         });
         $('#failure-modal').on('click', () => {
@@ -46,6 +55,14 @@
           return true;
         });
       }
+      console.log(count);
+      if (flag && count >= 2) {
+        fn(data);
+        this.reset();
+        this.elements[0].focus();
+        return true;
+      }
+
     });
   };
 
