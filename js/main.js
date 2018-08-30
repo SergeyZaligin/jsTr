@@ -12,6 +12,7 @@
 
 	formHandler = new FormHandler(FORM_SELECTOR);
 	formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
+	formHandler.addRangeHandler();
 	console.log(formHandler);
 
 	global.myTruck = myTruck;
