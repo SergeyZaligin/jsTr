@@ -54,15 +54,21 @@
           this.elements[0].focus();
           return true;
         });
-      }
-      console.log(count);
-      if (flag && count >= 2) {
+      } else if (data.strength < 81) {
         fn(data);
         this.reset();
         this.elements[0].focus();
         return true;
       }
 
+      console.log(count);
+
+      if (flag && count >= 2) {
+        fn(data);
+        this.reset();
+        this.elements[0].focus();
+        return true;
+      }
     });
   };
 
