@@ -28,15 +28,24 @@
         data[item.name] = item.value;
         console.log(item.name + ' is ' + item.value);
       });
+
       console.log(data);
+
       if (data.strength > 81) {
         modalSuperForm.modal({
           show: true
         });
+        $('#success-modal').on('click', () => {
+          console.log('SUCCESS');
+          return false;
+        });
+        $('#failure-modal').on('click', () => {
+          fn(data);
+          this.reset();
+          this.elements[0].focus();
+          return true;
+        });
       }
-      fn(data);
-      this.reset();
-      this.elements[0].focus();
     });
   };
 
