@@ -2,6 +2,10 @@
   'use strict';
   const App = global.App || {};
   const $ = global.jQuery;
+  const defaultRange = $('[type="range"]').val();
+  const rangeValue = $('#rangeValue');
+
+  compareRange(defaultRange, rangeValue);
 
   function FormHandler(selector) {
     if (!selector) {
@@ -30,16 +34,23 @@
     });
   };
 
+  function compareRange (range, elem) {
+    if (range <= 30) {
+      elem.css('color', 'green');
+    } else if (range >= 31 && range <= 80) {
+      elem.css('color', 'yellow');
+    } else if (range > 81) {
+      elem.css('color', 'red');
+    }
+  }
+
   FormHandler.prototype.addRangeHandler = function () {
+
+    rangeValue.text(defaultRange);
     $('[type="range"]').on('change', function (event) {
       let levelStrength = event.target.value;
-      if (levelStrength <= 30) {
-
-      } else if (levelStrength >= 31 && levelStrength <= 80) {
-
-      } else if (levelStrength < 80) {
-
-      }
+      rangeValue.text(levelStrength);
+      compareRange(levelStrength, rangeValue);
     });
   };
 
