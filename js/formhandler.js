@@ -4,6 +4,7 @@
   const $ = global.jQuery;
   const defaultRange = $('[type="range"]').val();
   const rangeValue = $('#rangeValue');
+  const modalSuperForm = $('#superModal');
 
   compareRange(defaultRange, rangeValue);
 
@@ -28,6 +29,11 @@
         console.log(item.name + ' is ' + item.value);
       });
       console.log(data);
+      if (data.strength > 81) {
+        modalSuperForm.modal({
+          show: true
+        });
+      }
       fn(data);
       this.reset();
       this.elements[0].focus();
@@ -47,11 +53,13 @@
   FormHandler.prototype.addRangeHandler = function () {
 
     rangeValue.text(defaultRange);
+
     $('[type="range"]').on('change', function (event) {
       let levelStrength = event.target.value;
       rangeValue.text(levelStrength);
       compareRange(levelStrength, rangeValue);
     });
+
   };
 
   App.FormHandler = FormHandler;

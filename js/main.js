@@ -11,8 +11,8 @@
 	const myTruck = new Truck('ncc-1701', new DataStore());
 
 	formHandler = new FormHandler(FORM_SELECTOR);
-	formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
 	formHandler.addRangeHandler();
+	formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
 	console.log(formHandler);
 
 	global.myTruck = myTruck;
